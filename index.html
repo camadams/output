@@ -5,33 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html {
+        height: 100%;
+      }
+    </style>
     <title>Cam Adams</title>
   </head>
   <body class="bg-gray-100">
-    <div class="max-w-4xl h-screen m-auto">
+    <main class="max-w-4xl h-screen m-auto">
       <nav class="flex items-center justify-evenly m-5">
-        <div class="bg-gray-200 m-2 text-center rounded-md p-2">
+        <div class="m-2 text-center rounded-md p-2">
           <a href="/">Home</a>
         </div>
-        <div class="bg-gray-200 m-2 text-center rounded-md p-2">
+        <div class="m-2 text-center rounded-md p-2">
           <a href="/bio.html">Bio</a>
         </div>
       </nav>
 
-      <div class="flex justify-between h-screen">
-        <div class="h-1/3 w-1/3 m-1 bg-red-200">
-          <img class="" src="https://picsum.photos/200" alt="random pic" />
+      <!-- projects -->
+      <div class="h-full">
+        <div class="mx-auto w-1/2 bg-red-200 mb-10">
+          <img
+            class="bg-auto bg-center"
+            src="https://picsum.photos/200"
+            alt="random pic"
+          />
         </div>
-        <div class="h-1/3 w-1/3 m-1 bg-red-200">
-          <img class="" src="https://picsum.photos/201" alt="random pic" />
+        <div class="mx-auto w-1/2 bg-red-200 mb-10">
+          <img
+            class="bg-auto bg-center w-full"
+            src="https://picsum.photos/201"
+            alt="random pic"
+          />
         </div>
-        <div class="h-1/3 w-1/3 m-1 bg-red-200">
-          <img class="" src="https://picsum.photos/202" alt="random pic" />
+        <div class="mx-auto w-1/2 bg-red-200 mb-10">
+          <img
+            class="bg-auto bg-center"
+            src="https://picsum.photos/202"
+            alt="random pic"
+          />
         </div>
       </div>
 
       <!-- <div class="w-1/2 mx-auto bg-red-300">Hi</div> -->
       <!-- <h1 class="text-3xl font-bold underline">Hello rwqerweq!</h1> -->
-    </div>
+    </main>
   </body>
 </html>
