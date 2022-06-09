@@ -1,0 +1,3 @@
+[submodule "projects/pathfinding"] 
+  path = projects/pathfinding 
+  url = git://https://github.com/camadams/pathfinding
