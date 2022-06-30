@@ -1,3 +1,7 @@
 [submodule "projects/pathfinding"]
     path = projects/pathfinding
     url = https://github.com/camadams/pathfinding
+
+[submodule "projects/waves"]
+    path = projects/waves
+    url = https://github.com/camadams/waves
