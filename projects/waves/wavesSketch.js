@@ -1,6 +1,6 @@
 function setup() {
   ////////////////// Working with the DOM (not used for this OpenProcessing project) ///////////////////
-  var canvas = createCanvas();
+  var canvas = createCanvas(WEBGL);
   canvas.parent('project-container');
   resizeCanvas(document.getElementById('project-container').clientWidth, document.getElementById('project-container').clientWidth);
   background(230);
