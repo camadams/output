@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./public/p5.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+    <title>asdf</title>
+  </head>
+  <body>
+    <h1>Hi</h1>
+    <script>
+      function setup() {
+        createCanvas(1000, 1000);
+        background(100);
+      }
+
+      function draw() {
+        if (mouseIsPressed) {
+          fill(0);
+        } else {
+          fill(255);
+        }
+        ellipse(mouseX, mouseY, 80, 80);
+      }
+    </script>
+  </body>
+</html>
