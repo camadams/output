@@ -5,18 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link type="text/css" rel="stylesheet" href="output.css" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
     <title>Cam Adams</title>
   </head>
   <body class="bg-gray-100">
     <main class="max-w-4xl h-screen m-auto">
-      <nav class="flex items-center justify-evenly m-5">
-        <div class="m-2 text-center rounded-md p-2">
-          <a href="/">Home</a>
-        </div>
-        <div class="m-2 text-center rounded-md p-2">
-          <a href="/bio">Bio</a>
-        </div>
-      </nav>
+      <div id="nav-bar"></div>
 
       <!-- projects -->
       <div class="h-full">
@@ -40,3 +35,8 @@
     </main>
   </body>
 </html>
+<script>
+  $(function () {
+    $('#nav-bar').load('./navbar.html');
+  });
+</script>

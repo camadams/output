@@ -5,22 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="../../public/p5.min.js"></script>
-    <script src="../../projects/pathfinding/Edge.js"></script>
-    <script src="../../projects/pathfinding/Node.js"></script>
+    <script src="./Edge.js"></script>
+    <script src="./Node.js"></script>
     <link type="text/css" rel="stylesheet" href="../../public/output.css" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
     <title>Pathfinding</title>
   </head>
   <body>
     <main class="max-w-4xl h-screen m-auto px-5">
-      <nav class="flex items-center justify-evenly">
-        <div class="m-2 text-center rounded-md p-2">
-          <a href="/">Home</a>
-        </div>
-        <div class="m-2 text-center rounded-md p-2">
-          <a href="/bio.html">Bio</a>
-        </div>
-      </nav>
+      <div id="nav-bar"></div>
       <div class="flex justify-center items-center flex-col">
         <div class="mb-3 text-xs text-gray-700">
           FFrom my research, a popular 'algorithm project' on software developers' portfolios, was path finding. Most projects I saw used a grid and a feature to draw obstacles for the algorithm to
@@ -37,3 +31,8 @@
     <script src="../../projects/pathfinding/main.js"></script>
   </body>
 </html>
+<script>
+  $(function () {
+    $('#nav-bar').load('./navbar.html');
+  });
+</script>
