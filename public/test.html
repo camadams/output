@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="output.css" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="p5.min.js"></script>
+
+    <title>Cam Adams</title>
+  </head>
+  <body class="bg-gray-100">
+    <main class="max-w-4xl h-screen m-auto">
+      <div id="nav-bar"></div>
+
+      <!-- bio -->
+      <!-- <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos itaque pariatur totam voluptatibus aliquid ullam voluptates laboriosam quis, reiciendis dolorum esse ratione voluptatem eligendi aspernatur nemo alias atque quibusdam earum. Quo voluptates, laborum assumenda sit eum ab alias velit! Saepe et incidunt error animi quasi adipisci ut eos architecto dolores?</div> -->
+      <div>Hi testttt</div>
+  </body>
+
+  <script>
+    function setup() {
+      createCanvas(1000, 1000);
+      background(100);
+    }
+
+    function draw() {
+      if (mouseIsPressed) {
+        fill(0);
+      } else {
+        fill(255);
+      }
+      ellipse(mouseX, mouseY, 80, 80);
+    }
+  </script>
+</html>
+
+<script>
+  $(function(){
+    $("#nav-bar").load("./navbar.html");
+  });
+</script>
