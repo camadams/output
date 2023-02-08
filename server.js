@@ -19,7 +19,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/bio', function (req, res) {
-  res.sendFile(path.join(__dirname, '/public/bio.html'));
+  res.sendFile(path.join(__dirname, '/public/projects/waves/waves.html'));
 });
 
 app.get('/pathfinding', function (req, res) {
