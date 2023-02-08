@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../p5.min.js"></script>
+    <script src="../../ParameterDot.js"></script>
+    <script src="../../Wave.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../public/output.css" />
+
+    <!-- <script src="https://cdn.t ailwindcss.com"></script> -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <style>
+      .progress {
+        position: relative;
+        width: 33%;
+        height: 30px;
+        background: #9cbab4;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      .fill {
+        width: 0%;
+        height: 100%;
+        background: #009579;
+        transition: all 0.2s;
+      }
+
+      .text {
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        transform: translateY(-50%);
+        font: bold 14px 'Quicksand', sans-serif;
+        color: #ffffff;
+      }
+    </style>
+
+    <title>Waves</title>
+  </head>
+  <body>
+    <main class="max-w-4xl h-fit m-auto px-5">
+      <div id="nav-bar"></div>
+      <div class="flex relative justify-center items-center flex-col">
+        <div class="mb-3 text-xs text-gray-700">I like Sine wave. They so pretty. Have a look 👀</div>
+        <div id="project-container" class="w-full m-auto"></div>
+        <!-- <div id="frameRateDiv" class="z-10 absolute left-0 top-0 border-2 p-1"></div> -->
+        <!-- <input type="range" min="1" max="100" value="50" class="w-full" id="myRange" /> -->
+      </div>
+    </main>
+
+    <div class="progress">
+      <div id="param_numWavesFill" class="fill"></div>
+      <div id="param_numWavesText" class="text"></div>
+    </div>
+
+    <div class="progress">
+      <div id="param_wavePeriodFill" class="fill"></div>
+      <div id="param_wavePeriodText" class="text"></div>
+    </div>
+  </body>
+</html>
+<script src="../../wavesSketch.js"></script>
+
+<script>
+  $(function () {
+    $('#nav-bar').load('../../navbar.html');
+  });
+
+  // function updateProgressBar(parameterDot) {
+  //   value = Math.round(value);
+  //   progressBar.querySelector('.fill').style.width = `${value}%`;
+  //   progressBar.querySelector('.text').textContent = `${value}%`;
+  // }
+
+  // const myProgressBar = document.querySelector('.progress');
+
+  // /* Example */
+  // updateProgressBar(myProgressBar, 72);
+</script>
+
+<!-- <script>
+  var parameterDot;
+
+  function setup() {
+    ////////////////// Working with the DOM (not used for this OpenProcessing project) ///////////////////
+    var canvas = createCanvas(WEBGL);
+    canvas.parent('project-container');
+    resizeCanvas(document.getElementById('project-container').clientWidth, document.getElementById('project-container').clientWidth);
+    parameterDot = new ParameterDot(round(width / 2), 140);
+  }
+
+  function draw() {
+    background(230);
+    // frameRateDiv.innerHTML = 'Frame Rate: ' + Math.round(frameRate());
+
+    var waves = [];
+    // var numWaves = map(mouseX, 0, width, 0, 100);
+    // var numWaves = 100;
+    var periodIncrement = map(parameterDot.x, 0, width, 0.3, -0.3);
+    var numOfWaves = map(parameterDot.y, 0, height, 10, 30);
+    for (let i = 0; i < numOfWaves; i++) {
+      waves.push(new Wave(0, 10 + i * 8, 10, 5 + i * periodIncrement));
+    }
+
+    for (var wave of waves) {
+      wave.show();
+    }
+
+    parameterDot.update();
+    parameterDot.show();
+    updateProgressBar();
+  }
+
+  function mousePressed() {
+    if (dist(mouseX, mouseY, parameterDot.x, parameterDot.y) < 5) {
+      parameterDot.selected = true;
+    }
+  }
+
+  function mouseReleased() {
+    parameterDot.selected = false;
+  }
+
+  function updateProgressBar() {
+    var xvalue = round(map(parameterDot.x, 0, width, 0, 100));
+    param_numWavesFill.style.width = `${xvalue}%`;
+    param_numWavesText.textContent = `${xvalue}%`;
+
+    var yvalue = round(map(parameterDot.y, 0, height, 0, 100));
+    param_wavePeriodFill.style.width = `${yvalue}%`;
+    param_wavePeriodText.textContent = `${yvalue}%`;
+    // console.log('"' + value + '"');
+    // progressBar.querySelector('.text').textContent = `${parameterDot.x}%`;
+  }
+
+  class Wave {
+    constructor(x, y, amp, period) {
+      this.x = x;
+      this.y = y;
+      this.amp = amp;
+      this.points = [];
+      this.period = period;
+      this.generatePoints();
+    }
+
+    generatePoints() {
+      var angle = 0;
+      this.points = [];
+      for (let i = 0; i < width; i++) {
+        const f = -1 * sin(angle) * this.amp;
+        this.points.push(f);
+        angle += (this.period / width) * 2 * Math.PI;
+      }
+    }
+
+    show() {
+      noFill();
+      beginShape();
+      for (let i = 0; i < this.points.length; i++) {
+        vertex(i + this.x, this.points[i] + this.y);
+      }
+      endShape();
+    }
+  }
+
+  class ParameterDot {
+    constructor(x, y, amp, period) {
+      this.x = x;
+      this.y = y;
+      this.selected = false;
+    }
+
+    update() {
+      if (this.selected) {
+        this.x = mouseX;
+        this.y = mouseY;
+      }
+    }
+
+    show() {
+      ellipse(this.x, this.y, 10);
+    }
+  }
+</script> -->
