@@ -5,26 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="../../public/p5.min.js"></script>
-    <script src="./Edge.js"></script>
-    <script src="./Node.js"></script>
+    <script src="Edge.js"></script>
+    <script src="Node.js"></script>
     <link type="text/css" rel="stylesheet" href="../../public/output.css" />
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
     <title>Pathfinding</title>
   </head>
   <body>
-    <main class="max-w-4xl h-screen m-auto px-5">
+    <main class="h-screen max-w-4xl px-5 m-auto">
       <div id="nav-bar"></div>
-      <div class="flex justify-center items-center flex-col">
+      <div class="flex flex-col items-center justify-center">
         <div class="mb-3 text-xs text-gray-700">
-          FFrom my research, a popular 'algorithm project' on software developers' portfolios, was path finding. Most projects I saw used a grid and a feature to draw obstacles for the algorithm to
-          find a path around. I wanted to try use a graph, which ended up taking most of my time. I used Djisktras algorithm to find the shortest path from any node to any other node.
-          <br /><br />
-          Start by clicking a 'start' node, then clicking 'Generate Shortest Paths', then clicking any other node to visualise the shortest path.
+          Dijkstra's algorithm is an algorithm for finding the shortest paths between nodes in a weighted graph. I wanted to try use a graph to demonstrate the algorithm, which ended up taking most of
+          my time. <br />
+          Tap any node then.<br />
+          Tap 'Generate Shortest Paths'. <br />
+          Tap any other other node. <br />
+          Tap any other other node again.
         </div>
-        <div id="project-container" class="w-full m-auto"></div>
-        <button id="startButtonDiv" class="border-2 p-1" onclick="setGenerateShortestPathsToTrue()">Generate Shortest Paths</button>
-        <div id="frameRateDiv" class="border-2 p-1"></div>
+        <div id="project-container" class="w-full m-auto mb-3"></div>
+        <button id="startButtonDiv" class="p-1 mb-3 border-2 rounded-lg" onclick="setGenerateShortestPathsToTrue()">Generate Shortest Paths</button>
+        <div id="frameRateDiv" class="p-1 border-2"></div>
         <!-- <input type="range" min="1" max="100" value="50" class="w-full" id="myRange" /> -->
       </div>
     </main>
