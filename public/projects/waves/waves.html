@@ -50,67 +50,68 @@
         <!-- <input type="range" min="1" max="100" value="50" class="w-full" id="myRange" /> -->
       </div>
 
-      <!-- x  -->
-      <div>
+      <!-- y axis  -->
+      <div class="mt-2">
         <div class="flex">
           <div class="w-1/2 progress">
-            <div id="param_numWavesFill" class="fill" onclick="clickedOnParameter(this.id,true);"></div>
-            <div id="param_numWavesText" class="text"></div>
+            <div id="numWavesFill" class="fill" onclick="clickedOnParameter(this.id,true);"></div>
+            <div id="numWavesText" class="text"></div>
           </div>
-          <div class="w-1/2 text-center" onclick="clickedOnParameter(this.id,true);">Num waves</div>
+          <button id="numWavesY" class="w-1/2 m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100 bg-sky-200" onclick="clickedOnParameter(this.id,true);">Num waves</button>
         </div>
 
         <div class="flex">
           <div class="w-1/2 progress">
-            <div id="param_wavePeriodFill" class="fill" onclick="clickedOnParameter(this.id,true);"></div>
-            <div id="param_wavePeriodText" class="text"></div>
+            <div id="periodFill" class="fill" onclick="clickedOnParameter(this.id,true);"></div>
+            <div id="periodText" class="text"></div>
           </div>
-          <div class="w-1/2 text-center" onclick="clickedOnParameter(this.id,true);">Period</div>
+          <button id="periodY" class="w-1/2 m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100" onclick="clickedOnParameter(this.id,true);">Period</button>
         </div>
 
         <div class="flex">
           <div class="w-1/2 progress">
-            <div id="param_distanceBetweenWavesFill" class="fill" onclick="clickedOnParameter(this.id,true);"></div>
-            <div id="param_distanceBetweenWavesText" class="text"></div>
+            <div id="distanceBetweenWavesFill" class="fill" onclick="clickedOnParameter(this.id,true);"></div>
+            <div id="distanceBetweenWavesText" class="text"></div>
           </div>
-          <div class="w-1/2 text-center" onclick="clickedOnParameter(this.id,true);">Dist btw waves</div>
+          <button id="distanceBetweenWavesY" class="w-1/2 m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100" onclick="clickedOnParameter(this.id,true);">Dist btw waves</button>
         </div>
       </div>
 
-      <div class="flex justify-evenly">
-        <div class="">Num waves</div>
-        <div class="">Period</div>
-        <div class="">Dist btw waves</div>
+      <!-- x axis  -->
+      <div class="flex justify-between">
+        <button id="numWavesX" class="w-full m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100" onclick="clickedOnParameter(this.id,false);">Num waves</button>
+        <button id="periodX" class="w-full m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100 bg-sky-200" onclick="clickedOnParameter(this.id,false);">Period</button>
+        <button id="distanceBetweenWavesX" class="w-full m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100" onclick="clickedOnParameter(this.id,false);">Dist btw waves</button>
       </div>
 
       <!-- <div class="progress">
-        <div id="param_wavePeriodFill" class="fill"></div>
-        <div id="param_wavePeriodText" class="text"></div>
+        <div id="periodFill" class="fill"></div>
+        <div id="periodText" class="text"></div>
       </div> -->
 
       <!-- <div class="progress">
-        <div id="param_numWavesFill" class="fill" onclick="clickedOnParameter(this.id,1);"></div>
-        <div id="param_numWavesText" class="text"></div>
+        <div id="numWavesFill" class="fill" onclick="clickedOnParameter(this.id,1);"></div>
+        <div id="numWavesText" class="text"></div>
       </div>
 
       <div class="progress">
-        <div id="param_wavePeriodFill" class="fill" onclick="clickedOnParameter(this.id,1);"></div>
-        <div id="param_wavePeriodText" class="text"></div>
+        <div id="periodFill" class="fill" onclick="clickedOnParameter(this.id,1);"></div>
+        <div id="periodText" class="text"></div>
       </div> -->
 
       <!-- <div class="progress">
-        <div id="param_wavePeriodFill" class="fill"></div>
-        <div id="param_wavePeriodText" class="text"></div>
+        <div id="periodFill" class="fill"></div>
+        <div id="periodText" class="text"></div>
       </div> -->
 
       <!-- <div class="relative overflow-hidden bg-gray-800 rounded-lg w-33 h-30">
-      <div id="param_numWavesFill" class="w-0 h-full transition duration-200 bg-green-500"></div>
-      <div id="param_numWavesText" class="absolute font-bold text-white transform translate-y-1/2 top-50 right-5 text-14 font-quicksand"></div>
+      <div id="numWavesFill" class="w-0 h-full transition duration-200 bg-green-500"></div>
+      <div id="numWavesText" class="absolute font-bold text-white transform translate-y-1/2 top-50 right-5 text-14 font-quicksand"></div>
       </div>
 
       <div class="relative overflow-hidden bg-gray-800 rounded-lg w-33 h-30">
-        <div id="param_wavePeriodFill" class="w-0 h-full transition duration-200 bg-green-500"></div>
-        <div id="param_wavePeriodText" class="absolute font-bold text-white transform translate-y-1/2 top-50 right-5 text-14 font-quicksand"></div>
+        <div id="periodFill" class="w-0 h-full transition duration-200 bg-green-500"></div>
+        <div id="periodText" class="absolute font-bold text-white transform translate-y-1/2 top-50 right-5 text-14 font-quicksand"></div>
       </div> -->
       <div id="frameRateDiv" class="p-1 border-2 rounded-md"></div>
     </main>

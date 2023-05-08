@@ -1,4 +1,5 @@
 var parameterDot;
+const SELECTED_COLOR = 'bg-sky-200';
 
 function setup() {
   ////////////////// Working with the DOM (not used for this OpenProcessing project) ///////////////////
@@ -7,38 +8,14 @@ function setup() {
   resizeCanvas(document.getElementById('project-container').clientWidth, document.getElementById('project-container').clientWidth);
   parameterDot = new ParameterDot(round(width / 2), 140);
   updateProgressBar();
-  // var waves = [];
-
-  // for (let i = 0; i < parameterDot.numWaves; i++) {
-  //   waves.push(new Wave(0, parameterDot.distanceBetweenWaves + i * 8, 10, 5 + i * parameterDot.periodIncrement));
-  // }
-  // for (var wave of waves) {
-  //   wave.show();
-  // }
-  var q = 33;
-  param_distanceBetweenWavesFill.style.width = `${q}%`;
-  param_distanceBetweenWavesText.textContent = `${q}%`;
 }
 function draw() {
   frameRateDiv.innerHTML = 'Frame Rate: ' + Math.round(frameRate());
-
   background(230);
-  // frameRateDiv.innerHTML = 'Frame Rate: ' + Math.round(frameRate());
-
-  var waves = [];
-  // var numWaves = map(mouseX, 0, width, 0, 100);
-  // var numWaves = 100;
-  // var periodIncrement = map(parameterDot.paramX, 0, width, 0.3, -0.3);
-  // var numOfWaves = map(parameterDot.y, 0, height, 10, 30);
-  // var distanceBetweenWaves = map(parameterDot.y, 0, height, 10, 30);
+  var ySpacing = height / (parameterDot.numWaves + 1);
   for (let i = 0; i < parameterDot.numWaves; i++) {
-    waves.push(new Wave(0, parameterDot.distanceBetweenWaves + i * 8, 10, 5 + i * parameterDot.periodIncrement));
+    new Wave(0, ySpacing * (i + 1), 10, 5 + i * parameterDot.periodIncrement).show();
   }
-
-  for (var wave of waves) {
-    wave.show();
-  }
-
   parameterDot.update();
   parameterDot.show();
   updateProgressBar();
@@ -55,48 +32,78 @@ function mouseReleased() {
 }
 
 function updateProgressBar() {
-  const x = [1, 2, 4];
-
-  var yvalue = round(map(parameterDot.y, 0, height, 0, 100));
-  if (parameterDot.paramY === ParameterDot.DISTANCE_BETWEEN_WAVES) {
-    param_distanceBetweenWavesFill.style.width = `${yvalue}%`;
-    param_distanceBetweenWavesText.textContent = `${yvalue}%`;
-  } else if (parameterDot.paramY === ParameterDot.NUM_WAVES) {
-    param_numWavesFill.style.width = `${yvalue}%`;
-    param_numWavesText.textContent = `${yvalue}%`;
-  } else if (parameterDot.paramY === ParameterDot.PERIOD_INCREMENT) {
-    param_wavePeriodFill.style.width = `${yvalue}%`;
-    param_wavePeriodText.textContent = `${yvalue}%`;
+  var yValuePercentage = round(map(parameterDot.y, 0, height, 0, 100));
+  var xValuePercentage = round(map(parameterDot.x, 0, width, 0, 100));
+  switch (parameterDot.paramY) {
+    case ParameterDot.NUM_WAVES:
+      numWavesFill.style.width = `${yValuePercentage}%`;
+      numWavesText.textContent = `${yValuePercentage}%`;
+      break;
+    case ParameterDot.PERIOD_INCREMENT:
+      periodFill.style.width = `${yValuePercentage}%`;
+      periodText.textContent = `${yValuePercentage}%`;
+      break;
+    case ParameterDot.DISTANCE_BETWEEN_WAVES:
+      distanceBetweenWavesFill.style.width = `${yValuePercentage}%`;
+      distanceBetweenWavesText.textContent = `${yValuePercentage}%`;
+      break;
   }
-  var xvalue = round(map(parameterDot.x, 0, width, 0, 100));
-  param_wavePeriodFill.style.width = `${xvalue}%`;
-  param_wavePeriodText.textContent = `${xvalue}%`;
+
+  switch (parameterDot.paramX) {
+    case ParameterDot.NUM_WAVES:
+      numWavesFill.style.width = `${xValuePercentage}%`;
+      numWavesText.textContent = `${xValuePercentage}%`;
+      break;
+    case ParameterDot.PERIOD_INCREMENT:
+      periodFill.style.width = `${xValuePercentage}%`;
+      periodText.textContent = `${xValuePercentage}%`;
+      break;
+    case ParameterDot.DISTANCE_BETWEEN_WAVES:
+      distanceBetweenWavesFill.style.width = `${xValuePercentage}%`;
+      distanceBetweenWavesText.textContent = `${xValuePercentage}%`;
+      break;
+  }
+  // if (parameterDot.paramY === ParameterDot.DISTANCE_BETWEEN_WAVES) {
+  //   distanceBetweenWavesFill.style.width = `${yValuePercentage}%`;
+  //   distanceBetweenWavesText.textContent = `${yValuePercentage}%`;
+  // } else if (parameterDot.paramY === ParameterDot.NUM_WAVES) {
+  //   numWavesFill.style.width = `${yValuePercentage}%`;
+  //   numWavesText.textContent = `${yValuePercentage}%`;
+  // } else if (parameterDot.paramY === ParameterDot.PERIOD_INCREMENT) {
+  //   periodFill.style.width = `${yValuePercentage}%`;
+  //   periodText.textContent = `${yValuePercentage}%`;
+  // }
+  // var xvalue = round(map(parameterDot.x, 0, width, 0, 100));
+  // periodFill.style.width = `${xvalue}%`;
+  // periodText.textContent = `${xvalue}%`;
 
   // var yvalue = round(map(parameterDot.y, 0, height, 0, 100));
-  // param_wavePeriodFill.style.width = `${yvalue}%`;
-  // param_wavePeriodText.textContent = `${yvalue}%`;
+  // periodFill.style.width = `${yvalue}%`;
+  // periodText.textContent = `${yvalue}%`;
 
   // var yvalue = round(map(parameterDot.y, 0, height, 0, 100));
-  // param_wavePeriodFill.style.width = `${yvalue}%`;
-  // param_wavePeriodText.textContent = `${yvalue}%`;
+  // periodFill.style.width = `${yvalue}%`;
+  // periodText.textContent = `${yvalue}%`;
   // console.log('"' + value + '"');
   // progressBar.querySelector('.progress__text').textContent = `${parameterDot.x}%`;
 }
 
-function clickedOnParameter(id, yParam) {
-  console.log(id);
-  if (yParam) {
-    if (id === 'param_numWavesFill') {
-      parameterDot.paramY = ParameterDot.NUM_WAVES;
-    } else if (id === 'param_wavePeriodFill') {
-      parameterDot.paramY = ParameterDot.PERIOD_INCREMENT;
-    } else if (id === 'param_distanceBetweenWavesFill') {
-      parameterDot.paramY = ParameterDot.DISTANCE_BETWEEN_WAVES;
-    }
+function clickedOnParameter(id) {
+  var oldParamId = '';
+  var selectedParameter = id.slice(0, -1);
+  if (id.slice(-1) === 'X') {
+    // if (selectedParameter === parameterDot.paramY) return;
+    oldParamId = parameterDot.paramX + 'X';
+    parameterDot.paramX = selectedParameter;
   } else {
-    if (id === 'param_numWavesFill') {
-      parameterDot.paramX = ParameterDot.NUM_WAVES;
-    } else {
-    }
+    // if (selectedParameter === parameterDot.paramX) return;
+    oldParamId = parameterDot.paramY + 'Y';
+    parameterDot.paramY = selectedParameter;
   }
+
+  var oldParam = document.getElementById(oldParamId);
+  oldParam.className = oldParam.className.replace(SELECTED_COLOR, '');
+
+  var newParam = document.getElementById(id);
+  newParam.className += ' ' + SELECTED_COLOR;
 }

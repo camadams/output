@@ -1,7 +1,12 @@
 class ParameterDot {
-  static NUM_WAVES = 0;
-  static PERIOD_INCREMENT = 1;
-  static DISTANCE_BETWEEN_WAVES = 2;
+  static NUM_WAVES = 'numWaves';
+  static NUM_WAVES_MIN = 1;
+  static NUM_WAVES_MAX = 80;
+
+  static PERIOD_INCREMENT = 'period';
+  static PERIOD_INCREMENT_MIN = -0.3;
+  static PERIOD_INCREMENT_MAX = 0.3;
+  static DISTANCE_BETWEEN_WAVES = 'distanceBetweenWaves';
 
   constructor(x, y, amp, period) {
     this.x = x;
@@ -9,11 +14,10 @@ class ParameterDot {
     this.selected = false;
 
     this.numWaves = x;
-    this.numWaves = map(this.numWaves, 0, height, 4, 30);
+    this.numWaves = map(this.numWaves, 0, height, ParameterDot.NUM_WAVES_MIN, ParameterDot.NUM_WAVES_MAX);
 
     this.periodIncrement = y;
-    this.periodIncrement = map(this.periodIncrement, 0, width, 0.3, -0.3);
-
+    this.periodIncrement = map(this.periodIncrement, 0, width, ParameterDot.PERIOD_INCREMENT_MIN, ParameterDot.PERIOD_INCREMENT_MAX);
     this.distanceBetweenWaves = 10;
 
     this.paramY = ParameterDot.NUM_WAVES;
@@ -51,8 +55,8 @@ class ParameterDot {
           this.distanceBetweenWaves = this.y;
           break;
       }
-      this.numWaves = map(this.numWaves, 0, height, 4, 30);
-      this.periodIncrement = map(this.periodIncrement, 0, width, 0.3, -0.3);
+      this.numWaves = map(this.numWaves, 0, height, ParameterDot.NUM_WAVES_MIN, ParameterDot.NUM_WAVES_MAX);
+      this.periodIncrement = map(this.periodIncrement, 0, width, ParameterDot.PERIOD_INCREMENT_MIN, ParameterDot.PERIOD_INCREMENT_MAX);
       this.distanceBetweenWaves = map(this.distanceBetweenWaves, 0, height, 2, 50);
 
       // this.numWaves = round(this.numWaves);
