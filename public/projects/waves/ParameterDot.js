@@ -1,12 +1,16 @@
+const DECIMAL_PLACES = 3;
 class ParameterDot {
   static NUM_WAVES = 'numWaves';
   static NUM_WAVES_MIN = 1;
-  static NUM_WAVES_MAX = 80;
+  static NUM_WAVES_MAX = 100;
 
   static PERIOD_INCREMENT = 'period';
   static PERIOD_INCREMENT_MIN = -0.3;
   static PERIOD_INCREMENT_MAX = 0.3;
-  static DISTANCE_BETWEEN_WAVES = 'distanceBetweenWaves';
+
+  static MAX_AMP = 'maxAmp';
+  static MAX_AMP_MIN = 5;
+  static MAX_AMP_MAX = 150;
 
   constructor(x, y, amp, period) {
     this.x = x;
@@ -19,6 +23,9 @@ class ParameterDot {
     this.periodIncrement = y;
     this.periodIncrement = map(this.periodIncrement, 0, width, ParameterDot.PERIOD_INCREMENT_MIN, ParameterDot.PERIOD_INCREMENT_MAX);
     this.distanceBetweenWaves = 10;
+
+    this.maxAmp = 60;
+    // this.maxAmp = map(this.maxAmp, 0, width, ParameterDot.MAX_AMP_MIN, ParameterDot.MAX_AMP_MAX);
 
     this.paramY = ParameterDot.NUM_WAVES;
     this.paramX = ParameterDot.PERIOD_INCREMENT;
@@ -35,37 +42,36 @@ class ParameterDot {
 
       switch (this.paramX) {
         case ParameterDot.NUM_WAVES:
-          this.numWaves = this.x;
+          this.numWaves = round(map(this.x, 0, width, ParameterDot.NUM_WAVES_MIN, ParameterDot.NUM_WAVES_MAX), DECIMAL_PLACES);
           break;
         case ParameterDot.PERIOD_INCREMENT:
-          this.periodIncrement = this.x;
+          this.periodIncrement = round(map(this.x, 0, width, ParameterDot.PERIOD_INCREMENT_MIN, ParameterDot.PERIOD_INCREMENT_MAX), DECIMAL_PLACES);
           break;
-        case ParameterDot.DISTANCE_BETWEEN_WAVES:
-          this.distanceBetweenWaves = this.x;
+        case ParameterDot.MAX_AMP:
+          this.maxAmp = round(map(this.x, 0, width, ParameterDot.MAX_AMP_MIN, ParameterDot.MAX_AMP_MAX), DECIMAL_PLACES);
           break;
       }
+
       switch (this.paramY) {
         case ParameterDot.NUM_WAVES:
-          this.numWaves = this.y;
+          this.numWaves = round(map(this.y, 0, height, ParameterDot.NUM_WAVES_MIN, ParameterDot.NUM_WAVES_MAX), DECIMAL_PLACES);
           break;
         case ParameterDot.PERIOD_INCREMENT:
-          this.periodIncrement = this.y;
+          this.periodIncrement = round(map(this.y, 0, height, ParameterDot.PERIOD_INCREMENT_MIN, ParameterDot.PERIOD_INCREMENT_MAX), DECIMAL_PLACES);
           break;
-        case ParameterDot.DISTANCE_BETWEEN_WAVES:
-          this.distanceBetweenWaves = this.y;
+        case ParameterDot.MAX_AMP:
+          this.maxAmp = round(map(this.y, 0, height, ParameterDot.MAX_AMP_MIN, ParameterDot.MAX_AMP_MAX), DECIMAL_PLACES);
           break;
       }
-      this.numWaves = map(this.numWaves, 0, height, ParameterDot.NUM_WAVES_MIN, ParameterDot.NUM_WAVES_MAX);
-      this.periodIncrement = map(this.periodIncrement, 0, width, ParameterDot.PERIOD_INCREMENT_MIN, ParameterDot.PERIOD_INCREMENT_MAX);
-      this.distanceBetweenWaves = map(this.distanceBetweenWaves, 0, height, 2, 50);
-
-      // this.numWaves = round(this.numWaves);
-      // this.periodIncrement = round(this.periodIncrement);
-      // this.distanceBetweenWaves = round(this.distanceBetweenWaves);
     }
   }
 
   show() {
-    ellipse(this.x, this.y, 10);
+    fill(255, 0, 0, 150);
+    ellipse(this.x, this.y, 7);
+    if (this.selected) {
+      fill(255, 0, 0, 80);
+      ellipse(this.x, this.y, 15);
+    }
   }
 }

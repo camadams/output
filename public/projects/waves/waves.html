@@ -15,7 +15,7 @@
     <style>
       .progress {
         position: relative;
-        height: 30px;
+        height: 25px;
         background: #9cbab4;
         border-radius: 5px;
         overflow: hidden;
@@ -41,11 +41,11 @@
     <title>Waves</title>
   </head>
   <body>
-    <main class="max-w-4xl px-5 m-auto h-fit">
+    <main class="max-w-4xl px-5 m-auto text-xs h-fit">
       <div id="nav-bar"></div>
-      <div class="relative flex flex-col items-center justify-center">
-        <div class="mb-3 text-xs text-gray-700">I like Sine wave. They so pretty. Have a look 👀</div>
-        <div id="project-container" class="w-full m-auto"></div>
+      <div class="relative flex flex-col items-center justify-center m-auto md:w-3/5">
+        <div class="mb-3 text-gray-700">I like Sine waves. They're so pretty. Have a look 👀</div>
+        <div id="project-container" class="w-full"></div>
         <!-- <div id="frameRateDiv" class="absolute top-0 left-0 z-10 p-1 border-2"></div> -->
         <!-- <input type="range" min="1" max="100" value="50" class="w-full" id="myRange" /> -->
       </div>
@@ -70,10 +70,10 @@
 
         <div class="flex">
           <div class="w-1/2 progress">
-            <div id="distanceBetweenWavesFill" class="fill" onclick="clickedOnParameter(this.id,true);"></div>
-            <div id="distanceBetweenWavesText" class="text"></div>
+            <div id="maxAmpFill" class="fill" onclick="clickedOnParameter(this.id,true);"></div>
+            <div id="maxAmpText" class="text"></div>
           </div>
-          <button id="distanceBetweenWavesY" class="w-1/2 m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100" onclick="clickedOnParameter(this.id,true);">Dist btw waves</button>
+          <button id="maxAmpY" class="w-1/2 m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100" onclick="clickedOnParameter(this.id,true);">Max Amp</button>
         </div>
       </div>
 
@@ -81,7 +81,7 @@
       <div class="flex justify-between">
         <button id="numWavesX" class="w-full m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100" onclick="clickedOnParameter(this.id,false);">Num waves</button>
         <button id="periodX" class="w-full m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100 bg-sky-200" onclick="clickedOnParameter(this.id,false);">Period</button>
-        <button id="distanceBetweenWavesX" class="w-full m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100" onclick="clickedOnParameter(this.id,false);">Dist btw waves</button>
+        <button id="maxAmpX" class="w-full m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100" onclick="clickedOnParameter(this.id,false);">Max Amp</button>
       </div>
 
       <!-- <div class="progress">

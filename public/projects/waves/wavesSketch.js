@@ -6,15 +6,16 @@ function setup() {
   var canvas = createCanvas(WEBGL);
   canvas.parent('project-container');
   resizeCanvas(document.getElementById('project-container').clientWidth, document.getElementById('project-container').clientWidth);
-  parameterDot = new ParameterDot(round(width / 2), 140);
-  updateProgressBar();
+  parameterDot = new ParameterDot(round(width / 2), round(height / 2));
+  initProgressBar();
 }
 function draw() {
   frameRateDiv.innerHTML = 'Frame Rate: ' + Math.round(frameRate());
   background(230);
   var ySpacing = height / (parameterDot.numWaves + 1);
+  var ampIncrement = parameterDot.maxAmp / (parameterDot.numWaves - 1);
   for (let i = 0; i < parameterDot.numWaves; i++) {
-    new Wave(0, ySpacing * (i + 1), 10, 5 + i * parameterDot.periodIncrement).show();
+    new Wave(0, ySpacing * (i + 1), 5 + i * ampIncrement, 5 + i * parameterDot.periodIncrement).show();
   }
   parameterDot.update();
   parameterDot.show();
@@ -24,6 +25,7 @@ function draw() {
 function mousePressed() {
   if (dist(mouseX, mouseY, parameterDot.x, parameterDot.y) < 5) {
     parameterDot.selected = true;
+    // parameterDot.selected = !parameterDot.selected;
   }
 }
 
@@ -43,9 +45,9 @@ function updateProgressBar() {
       periodFill.style.width = `${yValuePercentage}%`;
       periodText.textContent = `${yValuePercentage}%`;
       break;
-    case ParameterDot.DISTANCE_BETWEEN_WAVES:
-      distanceBetweenWavesFill.style.width = `${yValuePercentage}%`;
-      distanceBetweenWavesText.textContent = `${yValuePercentage}%`;
+    case ParameterDot.MAX_AMP:
+      maxAmpFill.style.width = `${yValuePercentage}%`;
+      maxAmpText.textContent = `${yValuePercentage}%`;
       break;
   }
 
@@ -58,9 +60,9 @@ function updateProgressBar() {
       periodFill.style.width = `${xValuePercentage}%`;
       periodText.textContent = `${xValuePercentage}%`;
       break;
-    case ParameterDot.DISTANCE_BETWEEN_WAVES:
-      distanceBetweenWavesFill.style.width = `${xValuePercentage}%`;
-      distanceBetweenWavesText.textContent = `${xValuePercentage}%`;
+    case ParameterDot.MAX_AMP:
+      maxAmpFill.style.width = `${xValuePercentage}%`;
+      maxAmpText.textContent = `${xValuePercentage}%`;
       break;
   }
   // if (parameterDot.paramY === ParameterDot.DISTANCE_BETWEEN_WAVES) {
@@ -91,14 +93,38 @@ function updateProgressBar() {
 function clickedOnParameter(id) {
   var oldParamId = '';
   var selectedParameter = id.slice(0, -1);
-  if (id.slice(-1) === 'X') {
-    // if (selectedParameter === parameterDot.paramY) return;
+  var isXParam = id.slice(-1) === 'X';
+
+  if (isXParam) {
+    if (selectedParameter === parameterDot.paramY) return;
     oldParamId = parameterDot.paramX + 'X';
     parameterDot.paramX = selectedParameter;
+    switch (selectedParameter) {
+      case ParameterDot.NUM_WAVES:
+        parameterDot.x = map(parameterDot.numWaves, ParameterDot.NUM_WAVES_MIN, ParameterDot.NUM_WAVES_MAX, 0, width);
+        break;
+      case ParameterDot.PERIOD_INCREMENT:
+        parameterDot.x = map(parameterDot.periodIncrement, ParameterDot.PERIOD_INCREMENT_MIN, ParameterDot.PERIOD_INCREMENT_MAX, 0, width);
+        break;
+      case ParameterDot.MAX_AMP:
+        parameterDot.x = map(parameterDot.maxAmp, ParameterDot.MAX_AMP_MIN, ParameterDot.MAX_AMP_MAX, 0, width);
+        break;
+    }
   } else {
-    // if (selectedParameter === parameterDot.paramX) return;
+    if (selectedParameter === parameterDot.paramX) return;
     oldParamId = parameterDot.paramY + 'Y';
     parameterDot.paramY = selectedParameter;
+    switch (selectedParameter) {
+      case ParameterDot.NUM_WAVES:
+        parameterDot.y = map(parameterDot.numWaves, ParameterDot.NUM_WAVES_MIN, ParameterDot.NUM_WAVES_MAX, 0, height);
+        break;
+      case ParameterDot.PERIOD_INCREMENT:
+        parameterDot.y = map(parameterDot.periodIncrement, ParameterDot.PERIOD_INCREMENT_MIN, ParameterDot.PERIOD_INCREMENT_MAX, 0, height);
+        break;
+      case ParameterDot.MAX_AMP:
+        parameterDot.y = map(parameterDot.maxAmp, ParameterDot.MAX_AMP_MIN, ParameterDot.MAX_AMP_MAX, 0, height);
+        break;
+    }
   }
 
   var oldParam = document.getElementById(oldParamId);
@@ -106,4 +132,18 @@ function clickedOnParameter(id) {
 
   var newParam = document.getElementById(id);
   newParam.className += ' ' + SELECTED_COLOR;
+}
+
+function initProgressBar() {
+  var numWavesPercentage = round(map(parameterDot.numWaves, ParameterDot.NUM_WAVES_MIN, ParameterDot.NUM_WAVES_MAX, 0, 100));
+  numWavesFill.style.width = `${numWavesPercentage}%`;
+  numWavesText.textContent = `${numWavesPercentage}%`;
+
+  var periodPercentage = round(map(parameterDot.periodIncrement, ParameterDot.PERIOD_INCREMENT_MIN, ParameterDot.PERIOD_INCREMENT_MAX, 0, 100));
+  periodFill.style.width = `${periodPercentage}%`;
+  periodText.textContent = `${periodPercentage}%`;
+
+  var maxAmpPercentage = round(map(parameterDot.maxAmp, ParameterDot.MAX_AMP_MIN, ParameterDot.MAX_AMP_MAX, 0, 100));
+  maxAmpFill.style.width = `${maxAmpPercentage}%`;
+  maxAmpText.textContent = `${maxAmpPercentage}%`;
 }
