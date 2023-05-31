@@ -23,7 +23,7 @@ function draw() {
 }
 
 function mousePressed() {
-  if (dist(mouseX, mouseY, parameterDot.x, parameterDot.y) < 5) {
+  if (dist(mouseX, mouseY, parameterDot.x, parameterDot.y) < 8) {
     parameterDot.selected = true;
     // parameterDot.selected = !parameterDot.selected;
   }
