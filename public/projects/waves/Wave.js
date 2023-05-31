@@ -13,6 +13,7 @@ class Wave {
     this.points = [];
     for (let i = 0; i < width; i++) {
       const f = -1 * sin(angle) * this.amp;
+      // const f = -1 * sin(angle + noise((this.y + i) / 500)) * this.amp;
       this.points.push(f);
       angle += (this.period / width) * 2 * Math.PI;
     }
