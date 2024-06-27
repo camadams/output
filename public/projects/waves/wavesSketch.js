@@ -5,10 +5,7 @@ function setup() {
   ////////////////// Working with the DOM (not used for this OpenProcessing project) ///////////////////
   var canvas = createCanvas(WEBGL);
   canvas.parent("project-container");
-  resizeCanvas(
-    document.getElementById("project-container").clientWidth,
-    document.getElementById("project-container").clientWidth
-  );
+  resizeCanvas(document.getElementById("project-container").clientWidth, document.getElementById("project-container").clientWidth);
   parameterDot = new ParameterDot(round(width / 2), round(height / 2));
   initProgressBar();
 }
@@ -26,7 +23,9 @@ function draw() {
   parameterDot.show();
   updateProgressBar();
 }
-
+function windowResized() {
+  resizeCanvas(document.getElementById("project-container").clientWidth, document.getElementById("project-container").clientWidth);
+}
 function mousePressed() {
   if (dist(mouseX, mouseY, parameterDot.x, parameterDot.y) < 8) {
     parameterDot.selected = true;
@@ -106,31 +105,13 @@ function clickedOnParameter(id) {
     parameterDot.paramX = selectedParameter;
     switch (selectedParameter) {
       case ParameterDot.NUM_WAVES:
-        parameterDot.x = map(
-          parameterDot.numWaves,
-          ParameterDot.NUM_WAVES_MIN,
-          ParameterDot.NUM_WAVES_MAX,
-          0,
-          width
-        );
+        parameterDot.x = map(parameterDot.numWaves, ParameterDot.NUM_WAVES_MIN, ParameterDot.NUM_WAVES_MAX, 0, width);
         break;
       case ParameterDot.PERIOD_INCREMENT:
-        parameterDot.x = map(
-          parameterDot.periodIncrement,
-          ParameterDot.PERIOD_INCREMENT_MIN,
-          ParameterDot.PERIOD_INCREMENT_MAX,
-          0,
-          width
-        );
+        parameterDot.x = map(parameterDot.periodIncrement, ParameterDot.PERIOD_INCREMENT_MIN, ParameterDot.PERIOD_INCREMENT_MAX, 0, width);
         break;
       case ParameterDot.MAX_AMP:
-        parameterDot.x = map(
-          parameterDot.maxAmp,
-          ParameterDot.MAX_AMP_MIN,
-          ParameterDot.MAX_AMP_MAX,
-          0,
-          width
-        );
+        parameterDot.x = map(parameterDot.maxAmp, ParameterDot.MAX_AMP_MIN, ParameterDot.MAX_AMP_MAX, 0, width);
         break;
     }
   } else {
@@ -139,31 +120,13 @@ function clickedOnParameter(id) {
     parameterDot.paramY = selectedParameter;
     switch (selectedParameter) {
       case ParameterDot.NUM_WAVES:
-        parameterDot.y = map(
-          parameterDot.numWaves,
-          ParameterDot.NUM_WAVES_MIN,
-          ParameterDot.NUM_WAVES_MAX,
-          0,
-          height
-        );
+        parameterDot.y = map(parameterDot.numWaves, ParameterDot.NUM_WAVES_MIN, ParameterDot.NUM_WAVES_MAX, 0, height);
         break;
       case ParameterDot.PERIOD_INCREMENT:
-        parameterDot.y = map(
-          parameterDot.periodIncrement,
-          ParameterDot.PERIOD_INCREMENT_MIN,
-          ParameterDot.PERIOD_INCREMENT_MAX,
-          0,
-          height
-        );
+        parameterDot.y = map(parameterDot.periodIncrement, ParameterDot.PERIOD_INCREMENT_MIN, ParameterDot.PERIOD_INCREMENT_MAX, 0, height);
         break;
       case ParameterDot.MAX_AMP:
-        parameterDot.y = map(
-          parameterDot.maxAmp,
-          ParameterDot.MAX_AMP_MIN,
-          ParameterDot.MAX_AMP_MAX,
-          0,
-          height
-        );
+        parameterDot.y = map(parameterDot.maxAmp, ParameterDot.MAX_AMP_MIN, ParameterDot.MAX_AMP_MAX, 0, height);
         break;
     }
   }
@@ -176,39 +139,15 @@ function clickedOnParameter(id) {
 }
 
 function initProgressBar() {
-  var numWavesPercentage = round(
-    map(
-      parameterDot.numWaves,
-      ParameterDot.NUM_WAVES_MIN,
-      ParameterDot.NUM_WAVES_MAX,
-      0,
-      100
-    )
-  );
+  var numWavesPercentage = round(map(parameterDot.numWaves, ParameterDot.NUM_WAVES_MIN, ParameterDot.NUM_WAVES_MAX, 0, 100));
   numWavesFill.style.width = `${numWavesPercentage}%`;
   numWavesText.textContent = `${numWavesPercentage}%`;
 
-  var periodPercentage = round(
-    map(
-      parameterDot.periodIncrement,
-      ParameterDot.PERIOD_INCREMENT_MIN,
-      ParameterDot.PERIOD_INCREMENT_MAX,
-      0,
-      100
-    )
-  );
+  var periodPercentage = round(map(parameterDot.periodIncrement, ParameterDot.PERIOD_INCREMENT_MIN, ParameterDot.PERIOD_INCREMENT_MAX, 0, 100));
   periodFill.style.width = `${periodPercentage}%`;
   periodText.textContent = `${periodPercentage}%`;
 
-  var maxAmpPercentage = round(
-    map(
-      parameterDot.maxAmp,
-      ParameterDot.MAX_AMP_MIN,
-      ParameterDot.MAX_AMP_MAX,
-      0,
-      100
-    )
-  );
+  var maxAmpPercentage = round(map(parameterDot.maxAmp, ParameterDot.MAX_AMP_MIN, ParameterDot.MAX_AMP_MAX, 0, 100));
   maxAmpFill.style.width = `${maxAmpPercentage}%`;
   maxAmpText.textContent = `${maxAmpPercentage}%`;
 }

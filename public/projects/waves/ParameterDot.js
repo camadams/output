@@ -1,14 +1,14 @@
 const DECIMAL_PLACES = 3;
 class ParameterDot {
-  static NUM_WAVES = 'numWaves';
+  static NUM_WAVES = "numWaves";
   static NUM_WAVES_MIN = 1;
   static NUM_WAVES_MAX = 100;
 
-  static PERIOD_INCREMENT = 'period';
+  static PERIOD_INCREMENT = "period";
   static PERIOD_INCREMENT_MIN = -0.3;
   static PERIOD_INCREMENT_MAX = 0.3;
 
-  static MAX_AMP = 'maxAmp';
+  static MAX_AMP = "maxAmp";
   static MAX_AMP_MIN = 5;
   static MAX_AMP_MAX = 150;
 

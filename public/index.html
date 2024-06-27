@@ -8,36 +8,55 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
     <title>Cam Adams</title>
+    <script>
+      function change() {
+        alert("hi");
+      }
+
+      $(document).ready(function () {
+        $("button").click(function () {
+          $("#pageTitle").html("<h1>Hello, World!</h1>");
+        });
+      });
+    </script>
   </head>
-  <body class="bg-gray-300">
-    <main class="h-screen max-w-4xl px-5 m-auto lg:max-w-md">
-      <div id="nav-bar"></div>
+  <body class="">
+    <div id="nav-bar"></div>
+    <main>
       <!-- projects -->
-      <div class="h-full">
-        <a href="./projects/pathfinding/pathfinding.html">
-          <div class="relative mx-auto mb-10 overflow-hidden bg-red-200 rounded-lg">
-            <img class="w-full bg-center bg-auto" src="./images/pathfinding.png" alt="random pic" />
-          </div>
-        </a>
-        <a href="./projects/waves/waves.html">
-          <div class="relative mx-auto mb-10 overflow-hidden bg-red-300 rounded-lg">
+      <div class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+        <div class="relative flex items-center mx-auto overflow-hidden rounded-lg shadow-lg">
+          <a href="./projects/pathfinding/pathfinding.html">
+            <img class="w-full bg-center bg-auto rounded-sm" src="./images/pathfinding.png" alt="random pic" />
+          </a>
+        </div>
+
+        <div class="relative flex items-center mx-auto overflow-hidden rounded-lg shadow-lg">
+          <a href="./projects/waves/waves.html">
             <img class="w-full bg-center bg-auto" src="./images/waves.png" alt="random pic" />
-          </div>
-        </a>
+          </a>
+        </div>
+
+        <div class="relative flex items-center mx-auto overflow-hidden rounded-lg shadow-lg">
+          <a href="https://calculator-history.vercel.app/">
+            <img class="w-full bg-center bg-auto" src="./images/calculator.png" alt="random pic" />
+          </a>
+        </div>
+
         <!-- <a href="/asdf">
-          <div class="relative mx-auto mb-10 overflow-hidden bg-red-200 rounded-lg">
+          <div class="relative mx-auto overflow-hidden bg-red-200 rounded-lg">
             <img class="w-full bg-center bg-auto" src="https://picsum.photos/202" alt="random pic" />
           </div>
         </a> -->
       </div>
 
-      <!-- <div class="w-1/2 mx-auto bg-red-300">Hi</div> -->
+      <!-- <div class="w-1/2 mx-auto ">Hi</div> -->
       <!-- <h1 class="text-3xl font-bold underline">Hello rwqerweq!</h1> -->
     </main>
   </body>
 </html>
 <script>
   $(function () {
-    $('#nav-bar').load('./navbar.html');
+    $("#nav-bar").load("./navbar.html");
   });
 </script>

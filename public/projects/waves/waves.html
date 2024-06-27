@@ -11,40 +11,13 @@
 
     <!-- <script src="https://cdn.t ailwindcss.com"></script> -->
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
-    <style>
-      .progress {
-        position: relative;
-        height: 25px;
-        background: #9cbab4;
-        border-radius: 5px;
-        overflow: hidden;
-      }
-
-      .fill {
-        width: 0%;
-        height: 100%;
-        background: #009579;
-        transition: all 0.2s;
-      }
-
-      .text {
-        position: absolute;
-        top: 50%;
-        right: 5px;
-        transform: translateY(-50%);
-        font: bold 14px 'Quicksand', sans-serif;
-        color: #ffffff;
-      }
-    </style>
-
     <title>Waves</title>
   </head>
-  <body class="bg-gray-300">
+  <body>
     <main class="max-w-4xl px-5 m-auto text-xs h-fit">
       <div id="nav-bar"></div>
       <div class="relative flex flex-col items-center justify-center m-auto md:w-3/5">
-        <div class="mb-3 text-gray-700">
+        <div class="mb-3 text-[1rem] text-gray-700">
           I like Sine waves. They're so pretty. Have a look 👀<br />
           Start by moving the red dot.
         </div>
@@ -54,57 +27,54 @@
       </div>
 
       <!-- y axis  -->
-      <div class="mt-2">
-        <div class="flex">
-          <div class="w-1/2 progress">
-            <div id="numWavesFill" class="fill" onclick="clickedOnParameter(this.id,true);"></div>
-            <div id="numWavesText" class="text"></div>
-          </div>
-          <button id="numWavesY" class="w-1/2 m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100 bg-sky-200" onclick="clickedOnParameter(this.id,true);">Num waves</button>
+      <div class="grid grid-cols-2 gap-1 mt-2">
+        <div class="relative overflow-hidden border-[1px] rounded-md border-gray-400">
+          <div id="numWavesFill" class="h-full transition-all duration-200 bg-gray-400 fill" onclick="clickedOnParameter(this.id,true);"></div>
+          <div id="numWavesText" class="absolute transform -translate-y-1/2 top-1/2 right-8" style="width: 0%"></div>
         </div>
 
-        <div class="flex">
-          <div class="w-1/2 progress">
-            <div id="periodFill" class="fill" onclick="clickedOnParameter(this.id,true);"></div>
-            <div id="periodText" class="text"></div>
-          </div>
-          <button id="periodY" class="w-1/2 m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100" onclick="clickedOnParameter(this.id,true);">Period</button>
+        <button id="numWavesY" class="text-center border-[1px] rounded-md border-gray-400 hover:bg-sky-100 bg-sky-200" onclick="clickedOnParameter(this.id,true);">Num waves</button>
+
+        <div class="relative overflow-hidden rounded-md border-[1px] border-gray-400">
+          <div id="periodFill" class="h-full transition-all duration-200 bg-gray-400 fill" onclick="clickedOnParameter(this.id,true);"></div>
+          <div id="periodText" class="absolute transform -translate-y-1/2 top-1/2 right-8" style="width: 0%"></div>
         </div>
 
-        <div class="flex">
-          <div class="w-1/2 progress">
-            <div id="maxAmpFill" class="fill" onclick="clickedOnParameter(this.id,true);"></div>
-            <div id="maxAmpText" class="text"></div>
-          </div>
-          <button id="maxAmpY" class="w-1/2 m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100" onclick="clickedOnParameter(this.id,true);">Max Amp</button>
+        <button id="periodY" class="text-center border-[1px] rounded-md border-gray-400 hover:bg-sky-100" onclick="clickedOnParameter(this.id,true);">Period</button>
+
+        <div class="relative overflow-hidden rounded-md border-[1px] border-gray-400">
+          <div id="maxAmpFill" class="h-full transition-all duration-200 bg-gray-400 fill" onclick="clickedOnParameter(this.id,true);"></div>
+          <div id="maxAmpText" class="absolute transform -translate-y-1/2 top-1/2 right-8" style="width: 0%"></div>
         </div>
+
+        <button id="maxAmpY" class="text-center border-[1px] rounded-md border-gray-400 hover:bg-sky-100" onclick="clickedOnParameter(this.id,true);">Max Amp</button>
       </div>
 
       <!-- x axis  -->
-      <div class="flex justify-between">
-        <button id="numWavesX" class="w-full m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100" onclick="clickedOnParameter(this.id,false);">Num waves</button>
-        <button id="periodX" class="w-full m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100 bg-sky-200" onclick="clickedOnParameter(this.id,false);">Period</button>
-        <button id="maxAmpX" class="w-full m-1 text-center border-2 border-gray-400 rounded-md hover:bg-sky-100" onclick="clickedOnParameter(this.id,false);">Max Amp</button>
+      <div class="flex justify-between gap-1 my-1">
+        <button id="numWavesX" class="w-full text-center border-[1px] rounded-md border-gray-400 hover:bg-sky-100" onclick="clickedOnParameter(this.id,false);">Num waves</button>
+        <button id="periodX" class="w-full text-center border-[1px] rounded-md border-gray-400 hover:bg-sky-100 bg-sky-200" onclick="clickedOnParameter(this.id,false);">Period</button>
+        <button id="maxAmpX" class="w-full text-center border-[1px] rounded-md border-gray-400 hover:bg-sky-100" onclick="clickedOnParameter(this.id,false);">Max Amp</button>
       </div>
 
-      <!-- <div class="progress">
-        <div id="periodFill" class="fill"></div>
-        <div id="periodText" class="text"></div>
+      <!-- <div class="relative overflow-hidden rounded-md border-[1px] border-gray-400">
+        <div id="periodFill" class="h-full transition-all duration-200 bg-gray-400 fill"></div>
+        <div id="periodText" class="text "></div>
       </div> -->
 
       <!-- <div class="progress">
-        <div id="numWavesFill" class="fill" onclick="clickedOnParameter(this.id,1);"></div>
-        <div id="numWavesText" class="text"></div>
+        <div id="numWavesFill" class="h-full transition-all duration-200 bg-gray-400 fill" onclick="clickedOnParameter(this.id,1);"></div>
+        <div id="numWavesText" class="text "></div>
       </div>
 
       <div class="progress">
         <div id="periodFill" class="fill" onclick="clickedOnParameter(this.id,1);"></div>
-        <div id="periodText" class="text"></div>
+        <div id="periodText" class="text "></div>
       </div> -->
 
       <!-- <div class="progress">
         <div id="periodFill" class="fill"></div>
-        <div id="periodText" class="text"></div>
+        <div id="periodText" class="text "></div>
       </div> -->
 
       <!-- <div class="relative overflow-hidden bg-gray-800 rounded-lg w-33 h-30">
@@ -124,7 +94,7 @@
 
 <script>
   $(function () {
-    $('#nav-bar').load('../../navbar.html');
+    $("#nav-bar").load("../../navbar.html");
   });
 
   // function updateProgressBar(parameterDot) {
